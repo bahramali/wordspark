@@ -15,6 +15,8 @@ public class Word {
     private String term;
     private Integer freq;
 
+    private Word(){}
+
     private Word(Builder builder){
         this.term = builder.term;
         this.freq = builder.freq;
