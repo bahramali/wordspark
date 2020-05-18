@@ -7,12 +7,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import se.wordspark.common.Utility;
 import se.wordspark.entity.Word;
 import se.wordspark.service.PdfService;
 import se.wordspark.service.WordsService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class WordsparkApplicationTests {
@@ -25,6 +27,8 @@ class WordsparkApplicationTests {
     PdfService pdfService;
 
     final String filename = "/Users/azad/Desktop/sample.pdf";
+    final String filename2 = "/Users/azad/Desktop/the_hobbit.pdf";
+
 
     @Test
     void shouldSaveAndGetFromDataBase() {
@@ -38,7 +42,12 @@ class WordsparkApplicationTests {
 
     @Test
     void shouldReadPDF() throws IOException {
-        pdfService.getAllWords(filename);
+        Map<String, Integer> allWordsWithFrequency = pdfService.getAllWordsWithFrequency(filename2);
+        Map<String, Integer> sortByValue = Utility.sortDecreaseByValue(allWordsWithFrequency);
+
+        LOGGER.info("{}",sortByValue);
+
+
     }
 
 }
