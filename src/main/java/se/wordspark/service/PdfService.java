@@ -5,8 +5,9 @@ import se.wordspark.entity.Word;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public interface PdfService {
 
-    public List<Word> getAllWords(String pdfPath) throws IOException;
+    public Map<String,Integer> getAllWordsWithFrequency(String pdfPath) throws IOException;
 }
