@@ -8,6 +8,7 @@ import se.wordspark.repository.WordsRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WordServiceImpl implements WordsService {
@@ -18,6 +19,17 @@ public class WordServiceImpl implements WordsService {
     @Override
     public void add(Word word) {
         wordsRepository.save(word);
+    }
+
+    @Override
+    public void addAll(Map<String,Integer> wordsFreq) {
+        wordsFreq.forEach((key, value) -> wordsRepository.save(
+                Word.builder()
+                        .withTerm(key)
+                        .withFreq(value)
+                        .build()
+                )
+        );
     }
 
     @Override
