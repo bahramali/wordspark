@@ -27,15 +27,12 @@ public class PdfServiceImpl implements PdfService {
         Map<String, Integer> wordsFrequency = new HashMap<>();
         try {
             PDDocument document = PDDocument.load(new File(pdfPath));
-            // if (!document.isEncrypted()) {
-            //PDFTextStripper stripper = new PDFTextStripper().getText(document);
-            //text = stripper.getText(document);
             List<String> allWords = Arrays.asList(
                     new PDFTextStripper()
                             .getText(document)
+                            .toLowerCase()
                             .replaceAll("^[.!?;:‘’“”(),_[0-9]\\s]+", "")
                             .split("[.!?;:‘’“”(),_[0-9]\\s]+"));
-
             allWords.stream()
                     .filter(s -> s.matches("^[^\\d].*"))
                     .filter(s -> s.length() > 2)
