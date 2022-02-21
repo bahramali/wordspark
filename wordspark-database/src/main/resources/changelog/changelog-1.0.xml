@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet author="Azad" id="createSequence">
+        <createSequence
+                incrementBy="1"
+                sequenceName="WORD_ID_SEQ"
+                startValue="1000"/>
+    </changeSet>
+
+    <changeSet author="Azad" id="20220221-1">
+        <createTable tableName="WORD">
+            <column name="ID" type="BIGSERIAL" valueComputed="WORD_ID_SEQ.NEXTVAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="WORD_PKEY"/>
+            </column>
+            <column name="TERM" type="VARCHAR2(20)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="FREQ" type="DATE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202200201-1" author="MOB" context="legacy" dbms="oracle">
+        <sql endDelimiter="/">
+            CREATE OR REPLACE TRIGGER WORD_TRG
+            BEFORE INSERT ON WORD
+            FOR EACH ROW
+            WHEN (new.ID IS NULL)
+            BEGIN
+            SELECT WORD_ID_SEQ.NEXTVAL
+            INTO :new.ID
+            FROM dual;
+            END;
+            /
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

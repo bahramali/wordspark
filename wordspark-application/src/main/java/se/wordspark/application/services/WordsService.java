@@ -1,6 +1,6 @@
-package se.wordspark.services;
+package se.wordspark.application.services;
 
-import se.wordspark.entity.Word;
+import se.wordspark.database.entity.Word;
 
 import java.util.List;
 import java.util.Map;

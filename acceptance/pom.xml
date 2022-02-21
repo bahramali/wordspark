@@ -20,10 +20,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc8</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
@@ -88,12 +85,12 @@
                                     <overWrite>true</overWrite>
                                 </artifactItem>
                                 <artifactItem>
-                                    <groupId>se.telenor.comwhitelist</groupId>
-                                    <artifactId>cws-application</artifactId>
+                                    <groupId>se.wordspark</groupId>
+                                    <artifactId>wordspark-application</artifactId>
                                     <version>${project.version}</version>
                                     <type>jar</type>
                                     <overWrite>true</overWrite>
-                                    <destFileName>cws.jar</destFileName>
+                                    <destFileName>wordspark.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
                             <outputDirectory>${project.build.directory}</outputDirectory>

@@ -1,9 +1,8 @@
-package se.wordspark.services;
+package se.wordspark.application.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -14,9 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class PdfServiceImpl implements PdfService {
-
-    private final static Logger LOGGER = LoggerFactory.getLogger(PdfServiceImpl.class);
 
     @Override
     public Map<String, Integer> getAllWordsWithFrequency(String pdfPath) throws IOException {
@@ -38,7 +36,7 @@ public class PdfServiceImpl implements PdfService {
             //}
             document.close();
         } catch (IOException e) {
-            LOGGER.error("Not found {}", pdfPath);
+            log.error("Not found {}", pdfPath);
         }
         return wordsFrequency;
     }

@@ -17,6 +17,11 @@
             <groupId>se.wordspark</groupId>
             <artifactId>wordspark-database</artifactId>
         </dependency>
+        <!-- External Dependencies-->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+        </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>

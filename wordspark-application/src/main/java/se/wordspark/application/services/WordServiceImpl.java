@@ -1,9 +1,9 @@
-package se.wordspark.services;
+package se.wordspark.application.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.wordspark.entity.Word;
-import se.wordspark.repository.WordsRepository;
+import se.wordspark.database.entity.Word;
+import se.wordspark.database.repository.WordsRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +24,8 @@ public class WordServiceImpl implements WordsService {
     public void addAll(Map<String, Integer> wordsFreq) {
         wordsFreq.forEach((key, value) -> wordsRepository.save(
                         Word.builder()
-                                .withTerm(key)
-                                .withFreq(value)
+                                .term(key)
+                                .freq(value)
                                 .build()
                 )
         );
@@ -34,7 +34,7 @@ public class WordServiceImpl implements WordsService {
     @Override
     public List<Word> getAll() {
         List<Word> words = new ArrayList<>();
-        wordsRepository.findAll().forEach(words::add);
+        wordsRepository.findAll().toStream().forEach(words::add);
         return words;
     }
 }

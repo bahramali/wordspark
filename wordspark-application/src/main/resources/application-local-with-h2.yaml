@@ -1,0 +1,19 @@
+spring:
+  h2:
+    console:
+      enabled: true
+
+  r2dbc:
+    url: r2dbc:h2:mem:///~/db;MODE=PostgreSQL;
+    username: sa
+    password:
+
+  liquibase:
+    enabled: true
+    change-log: classpath:changelog-master.xml
+    url: jdbc:h2:mem:~/db;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    user: sa
+    password:
+
+server:
+  port: 8081
