@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WordsparkApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WordsparkApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WordsparkApplication.class, args);
+    }
 
 }

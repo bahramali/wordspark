@@ -1,21 +1,17 @@
-package se.wordspark.service;
+package se.wordspark.services;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import se.wordspark.entity.Word;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class PdfServiceImpl implements PdfService {

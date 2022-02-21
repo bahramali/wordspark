@@ -6,7 +6,7 @@ import se.wordspark.entity.Word;
 
 
 @Repository
-public interface WordsRepository extends CrudRepository<Word,Integer> {
+public interface WordsRepository extends CrudRepository<Word, Integer> {
 
     //public List<Word> getAllWord();
 

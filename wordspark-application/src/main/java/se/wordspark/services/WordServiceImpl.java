@@ -1,10 +1,9 @@
-package se.wordspark.service;
+package se.wordspark.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.wordspark.entity.Word;
 import se.wordspark.repository.WordsRepository;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +21,12 @@ public class WordServiceImpl implements WordsService {
     }
 
     @Override
-    public void addAll(Map<String,Integer> wordsFreq) {
+    public void addAll(Map<String, Integer> wordsFreq) {
         wordsFreq.forEach((key, value) -> wordsRepository.save(
-                Word.builder()
-                        .withTerm(key)
-                        .withFreq(value)
-                        .build()
+                        Word.builder()
+                                .withTerm(key)
+                                .withFreq(value)
+                                .build()
                 )
         );
     }

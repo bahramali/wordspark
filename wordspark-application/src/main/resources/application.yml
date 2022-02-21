@@ -17,14 +17,14 @@
 # ===============================
 spring:
   datasource:
-   url: jdbc:mysql://localhost:3306/words?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
-   #url: jdbc:mysql://localhost:3306/words
-   username: root
-   password: Reza1!Reza1!
+    url: jdbc:mysql://localhost:3306/words?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+    #url: jdbc:mysql://localhost:3306/words
+    username: root
+    password: Reza1!Reza1!
 
-# ===============================
-# = JPA configurations
-# ===============================
+  # ===============================
+  # = JPA configurations
+  # ===============================
   jpa:
     show-sql: true
     hibernate:
@@ -34,9 +34,9 @@ spring:
     properties:
       hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
 
-# ===============================
-# = Thymeleaf configurations
-# ===============================
+  # ===============================
+  # = Thymeleaf configurations
+  # ===============================
   thymeleaf:
     cache: false
     mode: LEGACYHTML5
@@ -54,5 +54,5 @@ logging:
 # = Configure uploaded picture size
 # ===============================
 server:
-    port: 9999
+  port: 9999
 

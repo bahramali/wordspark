@@ -1,7 +1,11 @@
 package se.wordspark.common;
 
-import java.util.*;
-import static java.util.Map.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.Map.Entry;
 
 public class Utility {
 
@@ -21,7 +25,7 @@ public class Utility {
         list.sort(Entry.comparingByValue());
 
         Map<K, V> result = new LinkedHashMap<>();
-        for (int i = list.size()-1;i>=0; i--) {
+        for (int i = list.size() - 1; i >= 0; i--) {
             result.put(list.get(i).getKey(), list.get(i).getValue());
         }
         return result;
