@@ -1,4 +1,4 @@
-package se.wordspark.database.database;
+package se.wordspark.database.repository;
 
 import io.r2dbc.h2.H2ConnectionConfiguration;
 import io.r2dbc.h2.H2ConnectionFactory;

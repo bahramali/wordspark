@@ -12,7 +12,7 @@
                 startValue="1000"/>
     </changeSet>
 
-    <changeSet author="Azad" id="20220221-1">
+    <changeSet author="Azad" id="20220226-1">
         <createTable tableName="WORD">
             <column name="ID" type="BIGSERIAL" valueComputed="WORD_ID_SEQ.NEXTVAL">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="WORD_PKEY"/>
@@ -20,7 +20,7 @@
             <column name="TERM" type="VARCHAR2(20)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="FREQ" type="DATE"/>
+            <column name="FREQ" type="int"/>
         </createTable>
     </changeSet>
 

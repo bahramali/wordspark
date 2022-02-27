@@ -1,4 +1,4 @@
-package se.wordspark.database.entity;
+package se.wordspark.database.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class Word {
   @Id
   @Column(name = "ID")
   @JsonIgnore
-  private Integer id;
+  private Long id;
 
   @Column(name = "TERM")
   private String term;

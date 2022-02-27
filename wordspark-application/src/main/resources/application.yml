@@ -23,7 +23,7 @@ logging:
     se:
       telenor: INFO
     root: INFO
-    liquibase: INFO
+    liquibase: debug
 server:
   shutdown: graceful
 

@@ -2,8 +2,9 @@ package se.wordspark.application.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.wordspark.database.entity.Word;
-import se.wordspark.database.repository.WordsRepository;
+import se.wordspark.database.model.Word;
+import se.wordspark.database.repository.WordReactiveRepository;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Map;
 public class WordServiceImpl implements WordsService {
 
     @Autowired
-    private WordsRepository wordsRepository;
+    private WordReactiveRepository wordsRepository;
 
     @Override
     public void add(Word word) {
