@@ -32,7 +32,7 @@
         <jaxp-api.version>1.4.2</jaxp-api.version>
         <guava.version>31.0.1-jre</guava.version>
         <logstash-logback-encoder.version>7.0.1</logstash-logback-encoder.version>
-        <pdfbox.version>2.0.19</pdfbox.version>
+        <pdfbox.version>2.0.24</pdfbox.version>
     </properties>
 
     <dependencies>
