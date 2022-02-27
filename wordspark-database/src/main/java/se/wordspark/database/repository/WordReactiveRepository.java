@@ -10,6 +10,6 @@ public interface WordReactiveRepository extends ReactiveSortingRepository<Word, 
 
   Mono<Word> findByTerm(String term);
 
- // Mono<Boolean> deleteByMsisdn(String phoneNumber);
+  Mono<Boolean> deleteByTerm(String term);
 
 }

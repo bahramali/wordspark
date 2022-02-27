@@ -88,36 +88,36 @@ class WordReactiveRepositoryTest {
         .verifyComplete();
   }
 
-//  @Test
-//  void should_delete_phone_by_id() {
-//    Word actualMonoNumber = repository.findByMsisdn(DEFAULT_TERM).block();
-//    Mono<Void> actualMono = repository.deleteById(actualMonoNumber.ge);
-//    StepVerifier.create(actualMono)
-//        .verifyComplete();
-//
-//    Mono<Word> byId = repository.findById(actualMonoNumber.getId());
-//    StepVerifier.create(byId)
-//        .expectNextCount(0)
-//        .verifyComplete();
-//  }
+  @Test
+  void should_delete_phone_by_id() {
+    Word actualWord = repository.findByTerm(DEFAULT_TERM).block();
+    Mono<Void> actualMono = repository.deleteById(actualWord.getId());
+    StepVerifier.create(actualMono)
+        .verifyComplete();
 
-//  @Test
-//  void should_return_true_when_deleting_existing_phone_by_phone_number() {
-//    Mono<Boolean> deletedWord = repository.deleteByMsisdn(DEFAULT_TERM);
-//    StepVerifier
-//        .create(deletedWord)
-//        .expectNext(Boolean.TRUE)
-//        .verifyComplete();
-//  }
+    Mono<Word> byId = repository.findById(actualWord.getId());
+    StepVerifier.create(byId)
+        .expectNextCount(0)
+        .verifyComplete();
+  }
 
-//  @Test
-//  void should_return_false_when_deleting_non_existing_phone_by_phone_number() {
-//    Mono<Boolean> deletedWord = repository.deleteByMsisdn("NON_EXISTING_NUMBER");
-//    StepVerifier
-//        .create(deletedWord)
-//        .expectNext(Boolean.FALSE)
-//        .verifyComplete();
-//  }
+  @Test
+  void should_return_true_when_deleting_existing_phone_by_phone_number() {
+    Mono<Boolean> deletedWord = repository.deleteByTerm(DEFAULT_TERM);
+    StepVerifier
+        .create(deletedWord)
+        .expectNext(Boolean.TRUE)
+        .verifyComplete();
+  }
+
+  @Test
+  void should_return_false_when_deleting_non_existing_phone_by_phone_number() {
+    Mono<Boolean> deletedWord = repository.deleteByTerm("NON_EXISTING_NUMBER");
+    StepVerifier
+        .create(deletedWord)
+        .expectNext(Boolean.FALSE)
+        .verifyComplete();
+  }
 
   @Test
   void should_fail_if_Word_is_without_number() {
