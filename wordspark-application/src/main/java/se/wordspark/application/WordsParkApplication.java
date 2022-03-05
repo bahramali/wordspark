@@ -10,13 +10,13 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
 @SpringBootApplication(scanBasePackages = {"se.wordspark.application"})
 @EnableR2dbcRepositories(basePackages = "se.wordspark.database.repository")
-public class WordsparkApplication {
+public class WordsParkApplication {
 
     @Value("${spring.application.name}")
     private String applicationName;
 
     public static void main(String[] args) {
-        SpringApplication.run(WordsparkApplication.class, args);
+        SpringApplication.run(WordsParkApplication.class, args);
     }
 
     @Bean

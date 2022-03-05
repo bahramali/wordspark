@@ -12,12 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service
 @Slf4j
+@Service
 public class PdfServiceImpl implements PdfService {
 
     @Override
-    public Map<String, Integer> getAllWordsWithFrequency(String pdfPath) throws IOException {
+    public Map<String, Integer> fetchAllUniqueWord(String pdfPath) {
         Map<String, Integer> wordsFrequency = new HashMap<>();
         try {
             PDDocument document = PDDocument.load(new File(pdfPath));
@@ -27,6 +27,7 @@ public class PdfServiceImpl implements PdfService {
                             .toLowerCase()
                             .replaceAll("^[.!?;:‘’“”(),_[0-9]\\s]+", "")
                             .split("[.!?;:‘’“”(),_[0-9]\\s]+"));
+
             allWords.stream()
                     .filter(s -> s.matches("^[^\\d].*"))
                     .filter(s -> s.length() > 2)
