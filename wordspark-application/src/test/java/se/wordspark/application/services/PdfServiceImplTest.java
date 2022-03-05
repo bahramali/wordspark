@@ -6,24 +6,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.IOException;
 import java.util.Map;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
 class PdfServiceImplTest {
 
-  final String filePath = "../resources/Princess_Diana.pdf";
+  final String filePath = "src/test/resources/Princess_Diana.pdf";
 
   @InjectMocks
   PdfServiceImpl sut;
 
   @Test
-  void should_save_and_get_from_dataBase() throws IOException {
+  void should_list_all_word_from_pdf() {
 
-    Map<String, Integer> allUniqueWord = sut.fetchAllUniqueWord(filePath);
+    Map<String, Integer> allUniqueWord = sut.fetchAllUniqueWord(filePath, 2);
 
-    log.info("List is %s", allUniqueWord.size());
+    log.info("List is {}", allUniqueWord.size());
     allUniqueWord.entrySet().forEach(System.out::println);
 
   }

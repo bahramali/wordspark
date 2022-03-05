@@ -16,29 +16,41 @@ import java.util.Map;
 @Service
 public class PdfServiceImpl implements PdfService {
 
-    @Override
-    public Map<String, Integer> fetchAllUniqueWord(String pdfPath) {
-        Map<String, Integer> wordsFrequency = new HashMap<>();
-        try {
-            PDDocument document = PDDocument.load(new File(pdfPath));
-            List<String> allWords = Arrays.asList(
-                    new PDFTextStripper()
-                            .getText(document)
-                            .toLowerCase()
-                            .replaceAll("^[.!?;:‘’“”(),_[0-9]\\s]+", "")
-                            .split("[.!?;:‘’“”(),_[0-9]\\s]+"));
+  @Override
+  public Map<String, Integer> fetchAllUniqueWord(String pdfPath, int numberOfLetter) {
+    Map<String, Integer> wordsFrequency = new HashMap<>();
+    try {
+      PDDocument document = PDDocument.load(new File(pdfPath));
+      List<String> allWords = Arrays.asList(
+          new PDFTextStripper()
+              .getText(document)
+              .toLowerCase()
+              .replaceAll("^[.!?;:‘’“”(),_/[0-9]\\s]+", "")
+              .split("[.!?;:‘’“”(),_/[0-9]\\s]+"));
 
-            allWords.stream()
-                    .filter(s -> s.matches("^[^\\d].*"))
-                    .filter(s -> s.length() > 2)
-                    .forEach(s -> {
-                        wordsFrequency.merge(s, 1, Integer::sum);
-                    });
-            //}
-            document.close();
-        } catch (IOException e) {
-            log.error("Not found {}", pdfPath);
-        }
-        return wordsFrequency;
+      log.info("\nAll un-unique words fond in book {} are {}\n",
+          document.getDocumentInformation().getTitle(), allWords.size());
+
+      allWords.stream()
+          .filter(item -> item.matches("^[^\\d].*"))
+          .filter(item -> item.length() > numberOfLetter)
+          .map(item -> removeCharacter(item, "'"))
+          .forEach(item -> {
+            wordsFrequency.merge(item, 1, Integer::sum);
+          });
+      //}
+      document.close();
+    } catch (IOException e) {
+      log.error("Not found {}", pdfPath);
     }
+    return wordsFrequency;
+  }
+
+  private String removeCharacter(String word, String target) {
+    if (word.contains("'")) {
+      word = word.replace(target, "");
+    }
+    return word;
+  }
+
 }
