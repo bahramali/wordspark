@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+import se.wordspark.database.model.Word;
+import se.wordspark.database.repository.WordReactiveRepository;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +18,12 @@ import java.util.Map;
 @Slf4j
 @Service
 public class PdfServiceImpl implements PdfService {
+
+  private WordReactiveRepository repository;
+
+  public PdfServiceImpl(WordReactiveRepository repository) {
+    this.repository = repository;
+  }
 
   @Override
   public Map<String, Integer> fetchAllUniqueWord(String pdfPath, int numberOfLetter) {
@@ -44,6 +53,19 @@ public class PdfServiceImpl implements PdfService {
       log.error("Not found {}", pdfPath);
     }
     return wordsFrequency;
+  }
+
+  @Override
+  public boolean save(String pdfPath) {
+    Map<String, Integer> allUniqueWord = fetchAllUniqueWord(pdfPath, 2);
+    allUniqueWord.entrySet().forEach(item -> {
+      Mono<Word> wordMono = repository.findByTerm(item.getKey());
+      if (wordMono.block().getTerm() != null) {
+       Word.builder().term()
+        repository.save();
+      }
+    });
+    return false;
   }
 
   private String removeCharacter(String word, String target) {

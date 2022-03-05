@@ -24,17 +24,16 @@ class PdfServiceImplTest {
 
     log.info("List is {}", allUniqueWord.size());
     allUniqueWord.entrySet().forEach(System.out::println);
-
   }
 
-/*    @Test
-    void shouldReadPDF() throws IOException {
-        Map<String, Integer> allWordsWithFrequency = pdfService.getAllWordsWithFrequency(filename);
-        Map<String, Integer> sortByValue = Utility.sortDecreaseByValue(allWordsWithFrequency);
+  @Test
+  void should_save_all_word_from_pdf_in_database() {
 
-        LOGGER.info("{}", sortByValue);
+    Map<String, Integer> allUniqueWord = sut.fetchAllUniqueWord(filePath, 2);
+
+    sut.save(filePath);
 
 
-    }*/
+  }
 
 }

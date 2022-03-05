@@ -7,4 +7,6 @@ public interface PdfService {
 
   Map<String, Integer> fetchAllUniqueWord(String pdfPath, int numberOfLetter) throws IOException;
 
+  boolean save(String pdfPath);
+
 }
