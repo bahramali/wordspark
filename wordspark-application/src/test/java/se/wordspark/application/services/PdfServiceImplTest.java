@@ -31,7 +31,7 @@ class PdfServiceImplTest {
 
     Map<String, Integer> allUniqueWord = sut.fetchAllUniqueWord(filePath, 2);
 
-    sut.save(filePath);
+    //sut.save(filePath);
 
 
   }

@@ -22,11 +22,11 @@ public class WordServiceImpl implements WordsService {
     }
 
     @Override
-    public void addAll(Map<String, Integer> wordsFreq) {
+    public void addAll(Map<String, String> wordsFreq) {
         wordsFreq.forEach((key, value) -> wordsRepository.save(
                         Word.builder()
                                 .term(key)
-                                .freq(value)
+                                .author(value)
                                 .build()
                 )
         );

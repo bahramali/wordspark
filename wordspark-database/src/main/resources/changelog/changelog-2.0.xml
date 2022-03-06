@@ -20,7 +20,7 @@
             <column name="TERM" type="VARCHAR2(20)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="author" type="VARCHAR2(20)"/>
+            <column name="FREQ" type="int"/>
         </createTable>
     </changeSet>
 

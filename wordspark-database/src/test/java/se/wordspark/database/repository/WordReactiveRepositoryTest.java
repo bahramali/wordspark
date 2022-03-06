@@ -26,7 +26,7 @@ class WordReactiveRepositoryTest {
   private static final String TERM = "Term";
   private static final Word word = Word.builder()
       .term("word")
-      .freq(1)
+      .author("author")
       .build();
 
   @Autowired

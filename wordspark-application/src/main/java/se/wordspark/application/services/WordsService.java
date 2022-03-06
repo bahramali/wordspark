@@ -9,7 +9,7 @@ public interface WordsService {
 
     void add(Word word);
 
-    void addAll(Map<String, Integer> wordsFreq);
+    void addAll(Map<String, String> wordsFreq);
 
     List<Word> getAll();
 }

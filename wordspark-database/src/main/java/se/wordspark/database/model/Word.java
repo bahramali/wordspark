@@ -25,7 +25,7 @@ public class Word {
   @Column(name = "TERM")
   private String term;
 
-  @Column(name = "FREQ")
-  private Integer freq;
+  @Column(name = "AUTHOR")
+  private String author;
 
 }
