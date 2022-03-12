@@ -13,7 +13,7 @@
     </changeSet>
 
     <changeSet author="Azad" id="20220226-1">
-        <createTable tableName="WORD">
+        <createTable tableName="VOCABULARY">
             <column name="ID" type="BIGSERIAL" valueComputed="WORD_ID_SEQ.NEXTVAL">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="WORD_PKEY"/>
             </column>

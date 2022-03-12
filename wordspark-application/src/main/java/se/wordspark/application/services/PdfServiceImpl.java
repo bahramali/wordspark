@@ -4,8 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.stereotype.Service;
-import se.wordspark.database.model.Word;
-import se.wordspark.database.repository.WordReactiveRepository;
+import se.wordspark.database.model.Vocabulary;
+import se.wordspark.database.repository.VocabReactiveRepository;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,9 +18,9 @@ import java.util.Map;
 @Service
 public class PdfServiceImpl implements PdfService {
 
-    private WordReactiveRepository repository;
+    private VocabReactiveRepository repository;
 
-    public PdfServiceImpl(WordReactiveRepository repository) {
+    public PdfServiceImpl(VocabReactiveRepository repository) {
         this.repository = repository;
     }
 
@@ -29,7 +29,7 @@ public class PdfServiceImpl implements PdfService {
         Map<String, Integer> wordsFrequency = new HashMap<>();
         try {
             PDDocument document = PDDocument.load(new File(pdfPath));
-            List<String> allWords = Arrays.asList(
+            List<String> allVocabularies = Arrays.asList(
                     new PDFTextStripper()
                             .getText(document)
                             .toLowerCase()
@@ -37,9 +37,9 @@ public class PdfServiceImpl implements PdfService {
                             .split("[.!?;:‘’“”(),_/[0-9]\\s]+"));
 
             log.info("\nAll un-unique words fond in book {} are {}\n",
-                    document.getDocumentInformation().getTitle(), allWords.size());
+                    document.getDocumentInformation().getTitle(), allVocabularies.size());
 
-            allWords.stream()
+            allVocabularies.stream()
                     .filter(item -> item.matches("^[^\\d].*"))
                     .filter(item -> item.length() > numberOfLetter)
                     .map(item -> removeCharacter(item, "'"))
@@ -58,12 +58,12 @@ public class PdfServiceImpl implements PdfService {
     public boolean save(String pdfPath) {
         Map<String, Integer> allUniqueWord = fetchAllUniqueWord(pdfPath, 2);
         allUniqueWord.forEach((key, value) -> {
-            Word word = repository.findByTerm(key).block();
+            Vocabulary vocabulary = repository.findByTerm(key).block();
 
-            if (word.getTerm() != null) {
-                Word build = Word.builder()
-                        .term(word.getTerm())
-                        .author(word.getAuthor())
+            if (vocabulary.getTerm() != null) {
+                Vocabulary build = se.wordspark.database.model.Vocabulary.builder()
+                        .term(vocabulary.getTerm())
+                        .author(vocabulary.getAuthor())
                         .build();
                 repository.save(build);
             }

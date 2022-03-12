@@ -3,12 +3,12 @@ package se.wordspark.database.repository;
 import org.springframework.data.repository.reactive.ReactiveSortingRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
-import se.wordspark.database.model.Word;
+import se.wordspark.database.model.Vocabulary;
 
 @Repository
-public interface WordReactiveRepository extends ReactiveSortingRepository<Word, Long> {
+public interface VocabReactiveRepository extends ReactiveSortingRepository<Vocabulary, Long> {
 
-  Mono<Word> findByTerm(String term);
+  Mono<Vocabulary> findByTerm(String term);
 
   Mono<Boolean> deleteByTerm(String term);
 

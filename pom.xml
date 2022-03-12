@@ -16,7 +16,7 @@
 
     <packaging>pom</packaging>
 
-    <description>To work with all words from a book and much the book with the level of english</description>
+    <description>To work with all vocabularies from a book and much the book with the level of english</description>
 
     <modules>
         <module>wordspark-database</module>

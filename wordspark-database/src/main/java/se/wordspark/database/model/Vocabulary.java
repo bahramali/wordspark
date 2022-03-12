@@ -14,8 +14,8 @@ import javax.persistence.Column;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table("WORD")
-public class Word {
+@Table("VOCABULARY")
+public class Vocabulary {
 
   @Id
   @Column(name = "ID")
