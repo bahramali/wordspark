@@ -1,4 +1,4 @@
-FROM openjdk-17-jre-headless
+FROM openjdk-17-jre
 
 EXPOSE 8080
 
