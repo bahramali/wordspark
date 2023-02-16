@@ -1,4 +1,4 @@
-FROM openjdk-17-jre
+FROM openjdk:17-jdk-slim
 
 EXPOSE 8080
 
