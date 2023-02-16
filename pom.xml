@@ -270,6 +270,34 @@
                 <module>acceptance</module>
             </modules>
         </profile>
+         <profile>
+            <id>payara</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>fish.payara.maven.plugins</groupId>
+                        <artifactId>payara-micro-maven-plugin</artifactId>
+                        <version>${payara-micro-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>bundle</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <useUberJar>true</useUberJar>
+                            <deployWar>true</deployWar>
+                            <payaraVersion>${payara-micro.Version}</payaraVersion>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
