@@ -30,7 +30,7 @@
         <ojdbc8.version>12.2.0.1</ojdbc8.version>
         <oracle-r2dbc.version>0.1.0</oracle-r2dbc.version>
         <jaxp-api.version>1.4.2</jaxp-api.version>
-        <guava.version>31.0.1-jre</guava.version>
+        <guava.version>32.0.0-jre</guava.version>
         <logstash-logback-encoder.version>7.0.1</logstash-logback-encoder.version>
         <pdfbox.version>2.0.24</pdfbox.version>
         <payara-micro.Version>6.2023.1</payara-micro.Version>
